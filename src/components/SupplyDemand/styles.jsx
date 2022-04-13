@@ -131,15 +131,28 @@ export const Genes = styled(motion.img)((props) => ({
   ...props,
 }));
 
-export const Title = styled(motion.p)`
+export const Title = styled(motion.p).attrs((props) => ({
+  className: props.className,
+}))`
   font-weight: bold;
-  background: ${(props) => {
-    return `linear-gradient(315deg, ${props.titleColor || "#f7bc2d"} 0%, ${
-      props.titleColor || "#ffee62"
-    } 100%)`;
-  }};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  &.yellowTitle {
+    background: linear-gradient(315deg, #f7bc2d 0%, #ffee62 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+  }
+  &.blueTitle {
+    background: linear-gradient(315deg, #73c9ff 0%, #73c9ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+  }
+  &.purpleTitle {
+    background: linear-gradient(315deg, #ec4ef3 0%, #ec4ef3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+  }
   ${between("sm", "lg")} {
     padding-left: 5rem;
     padding-right: 5rem;
@@ -166,17 +179,6 @@ export const Subtitle = styled(motion.p)((props) => ({
   },
   ...props,
 }));
-
-const scaleIn = keyframes`
-  0% {     
-   transform: scale(0);
-    opacity: 0; 
-  }
-  100% { 
-   transform: scale(1);
-    opacity: 1; 
-  }
-`;
 
 export const CircleContainer = styled(motion.div)`
   position: absolute;

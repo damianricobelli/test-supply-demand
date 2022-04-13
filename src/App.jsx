@@ -90,7 +90,8 @@ export default function Home() {
                     textAlign="center"
                   >
                     <Title
-                      animate={state === 3 ? "hidden" : "show"}
+                      className="yellowTitle"
+                      animate={state >= 3 ? "hidden" : "show"}
                       exit={{ scale: [1, 0] }}
                       transition={{ duration: 0 }}
                       variants={elementsVariants}
@@ -139,7 +140,8 @@ export default function Home() {
                     textAlign="center"
                   >
                     <Title
-                      animate={state === 3 ? "hidden" : "show"}
+                      className="yellowTitle"
+                      animate={state >= 3 ? "hidden" : "show"}
                       exit={{ scale: [1, 0] }}
                       transition={{ duration: 0 }}
                       variants={elementsVariants}
@@ -292,7 +294,7 @@ export default function Home() {
             >
               <Title
                 initial="without_opacity"
-                titleColor={state >= 3 && "#ec4ef3"}
+                className="purpleTitle"
                 animate={
                   state < 3
                     ? "without_opacity"
@@ -319,7 +321,7 @@ export default function Home() {
             >
               <Title
                 initial="without_opacity"
-                titleColor={state >= 3 && "#73c9ff"}
+                className="blueTitle"
                 animate={
                   state < 3
                     ? "without_opacity"
