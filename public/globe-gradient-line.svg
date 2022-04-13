@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="811" height="811" fill="none" viewBox="0 0 811 811">
+  <g clip-path="url(#a)">
+    <path fill="url(#b)" stroke="url(#c)" d="M405.5 811C629.451 811 811 629.451 811 405.5S629.451 0 405.5 0 0 181.549 0 405.5 181.549 811 405.5 811Z"/>
+  </g>
+  <defs>
+    <linearGradient id="b" x1="811" x2="0" y1="405" y2="405" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#73C9FF" stop-opacity=".15"/>
+      <stop offset=".232" stop-opacity="0"/>
+      <stop offset=".76" stop-opacity="0"/>
+      <stop offset="1" stop-color="#EC4EF3" stop-opacity=".15"/>
+    </linearGradient>
+    <linearGradient id="c" x1="0" x2="811" y1="405" y2="405" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EC4EF3" stop-opacity=".7"/>
+      <stop offset=".081" stop-opacity="0"/>
+      <stop offset=".922" stop-opacity="0"/>
+      <stop offset="1" stop-color="#73C9FF" stop-opacity=".7"/>
+    </linearGradient>
+    <clipPath id="a">
+      <path fill="#fff" d="M0 0h811v811H0z"/>
+    </clipPath>
+  </defs>
+</svg>
