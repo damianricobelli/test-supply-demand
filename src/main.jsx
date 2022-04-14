@@ -7,10 +7,10 @@ import { ThemeProvider } from "styled-components";
 import { createTheme } from "styled-breakpoints";
 
 const theme = createTheme({
-  sm: "576px",
+  sm: "560px",
   md: "768px",
   lg: "992px",
-  xl: "1200px",
+  xl: "1280px",
 });
 
 ReactDOM.render(

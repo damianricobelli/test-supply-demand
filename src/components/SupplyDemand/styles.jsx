@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { down, up, between } from "styled-breakpoints";
-import styled, { keyframes } from "styled-components";
+import { down, up, between, only } from "styled-breakpoints";
+import styled from "styled-components";
+import { Box } from "../UI/Box";
 import { Center } from "../UI/Center";
+import { Stack } from "../UI/Stack";
 
 export const ResponsiveCenter = styled(Center)((props) => ({
   [up("sm")(props)]: {
@@ -13,55 +15,78 @@ export const ResponsiveCenter = styled(Center)((props) => ({
   ...props,
 }));
 
+export const CustomStack = styled(Stack)((props) => ({
+  position: "absolute",
+  height: "700px",
+  alignItems: "center",
+  justifyContent: "center",
+  [down("md")(props)]: {
+    transform: "rotate(90deg)",
+  },
+}));
+
+export const Container = styled(Box)((props) => ({
+  [up("md")(props)]: {
+    width: "50%",
+  },
+  [down("md")(props)]: {
+    width: "100%",
+    transform: "rotate(270deg)",
+    zIndex: 3,
+  },
+}));
+
 export const CircleBox = styled(Center)((props) => ({
   position: "relative",
   zIndex: 2,
-  [up("sm")(props)]: {
+  [up("lg")(props)]: {
     width: "538px",
     "> svg": {
       width: "100%",
     },
   },
-  [down("sm")(props)]: {
-    padding: "2rem",
-    width: "100%",
+  [down("lg")(props)]: {
+    width: "400px",
     "> svg": {
-      maxWidth: "576px",
+      width: "100%",
+    },
+  },
+  [down("md")(props)]: {
+    width: "300px",
+    "> svg": {
+      width: "100%",
     },
   },
   "&.purple-circle": {
-    [between("sm", "md")(props)]: {
-      left: "1.5rem",
+    [down("md")(props)]: {
+      top: "1.5rem",
     },
     [up("md")(props)]: {
       left: "2.5rem",
     },
-    [down("sm")(props)]: {
-      top: "3.5rem",
-    },
   },
   "&.blue-circle": {
-    [between("sm", "md")(props)]: {
-      right: "1.5rem",
+    [down("md")(props)]: {
+      bottom: "1.5rem",
     },
     [up("md")(props)]: {
       right: "2.5rem",
-    },
-    [down("sm")(props)]: {
-      bottom: "3.5rem",
     },
   },
   ...props,
 }));
 
 export const LogoBox = styled(Center)((props) => ({
-  zIndex: 3,
+  zIndex: 4,
   position: "absolute",
   width: "100%",
   top: "48.5%",
   "> svg": {
     width: "100%",
     maxWidth: "30px",
+  },
+  [down("md")(props)]: {
+    transform: "rotate(270deg)",
   },
   ...props,
 }));
@@ -72,7 +97,8 @@ export const GlobeVideo = styled(motion.video)((props) => ({
   backgroundImage: "/background.png",
   [down("md")(props)]: {
     width: "100%",
-    maxWidth: "350px",
+    maxWidth: "200px",
+    transform: "rotate(270deg)",
   },
   [between("md", "lg")(props)]: {
     width: "100%",
@@ -86,21 +112,23 @@ export const GlobeVideo = styled(motion.video)((props) => ({
 }));
 
 export const GlobeBackground = styled(motion.img)((props) => ({
-  [down("md")(props)]: {
-    width: "600px",
+  zIndex: 3,
+  padding: 0,
+  display: "block",
+  margin: "0 auto",
+  maxHeight: "100%",
+  [down("sm")(props)]: {
+    maxWidth: "60%",
   },
-  [between("md", "lg")(props)]: {
-    width: "600px",
-  },
-  [up("lg")(props)]: {
-    width: "700px",
+  [between("sm", "xl")(props)]: {
+    maxWidth: "70%",
   },
   ...props,
 }));
 
 export const GlobeGradientLine = styled(motion.img)((props) => ({
   position: "absolute",
-  [down("sm")(props)]: {
+  [down("md")(props)]: {
     transform: "rotate(90deg)",
   },
   [down("md")(props)]: {
@@ -167,15 +195,12 @@ export const Title = styled(motion.p).attrs((props) => ({
 
 export const Subtitle = styled(motion.p)((props) => ({
   color: "white",
-  [between("sm", "lg")(props)]: {
-    paddingLeft: "5rem",
-    paddingRight: "5rem",
-  },
-  [up("sm")(props)]: {
+  [up("md")(props)]: {
     fontSize: "1rem",
   },
-  [down("sm")(props)]: {
+  [down("md")(props)]: {
     fontSize: "0.875rem",
+    margin: "0 3rem",
   },
   ...props,
 }));

@@ -11,9 +11,11 @@ import {
   ResponsiveCenter,
   CircleProduct,
   CircleContainer,
+  Container,
   Img,
   Subtitle,
   Title,
+  CustomStack,
 } from "./components/SupplyDemand/styles";
 import ParrotLogo from "./components/SupplyDemand/parrot-logo";
 import { GlowDot } from "./components/SupplyDemand/glow-dot";
@@ -54,15 +56,9 @@ export default function Home() {
           <button onClick={() => setState(4)}>Estado 4</button>
           <button onClick={() => setState(5)}>Estado 5</button>
         </Box>
-        <ResponsiveCenter height="100vh">
-          <Stack
-            position="absolute"
-            height="700px"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Box width="50%">
-              {/* Purple Circle */}
+        <ResponsiveCenter height="100vh" width="auto">
+          <CustomStack>
+            <Container className="purple">
               <AnimatePresence>
                 <CircleBox
                   className="purple-circle"
@@ -108,9 +104,8 @@ export default function Home() {
                   </Box>
                 </CircleBox>
               </AnimatePresence>
-            </Box>
-            <Box width="50%">
-              {/* Blue Circle */}
+            </Container>
+            <Container className="blue">
               <AnimatePresence>
                 <CircleBox
                   className="blue-circle"
@@ -158,7 +153,7 @@ export default function Home() {
                   </Box>
                 </CircleBox>
               </AnimatePresence>
-            </Box>
+            </Container>
             {/* Logo */}
             <LogoBox>
               <ParrotLogo />
@@ -278,7 +273,7 @@ export default function Home() {
                 })}
               </ResponsiveCenter>
             </AnimatePresence>
-          </Stack>
+          </CustomStack>
           {/* Text animated */}
           <AnimatePresence>
             <Box

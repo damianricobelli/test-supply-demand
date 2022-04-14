@@ -1,16 +1,32 @@
 import { Genes } from "./styles";
+import { useBreakpoint } from "styled-breakpoints/react-styled";
+import { down } from "styled-breakpoints";
 
 const images = {
   supply: {
-    src: "/supply-genes.svg",
+    src: {
+      portrait: "/supply-genes-portrait.svg",
+      normal: "/supply-genes.svg",
+    },
     alt: "Supply genes",
   },
   demand: {
-    src: "/demand-genes.svg",
+    src: {
+      portrait: "/demand-genes-portrait.svg",
+      normal: "/demand-genes.svg",
+    },
     alt: "Demand genes",
   },
 };
 
 export const GenesComponent = ({ type, ...props }) => {
-  return <Genes {...props} src={images[type].src} alt={images[type].alt} />;
+  const isSmall = useBreakpoint(down("md"));
+  console.log(isSmall);
+  return (
+    <Genes
+      {...props}
+      src={isSmall ? images[type].src.portrait : images[type].src.normal}
+      alt={images[type].alt}
+    />
+  );
 };
