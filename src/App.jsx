@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { LargeCircle } from "./components/SupplyDemand/large-circle";
 import { Box } from "./components/UI/Box";
-import { Stack } from "./components/UI/Stack";
 import {
   CircleBox,
   GlobeBackground,
@@ -25,26 +24,21 @@ import { GenesComponent } from "./components/SupplyDemand/genes";
 
 import { useRect } from "./hooks/useRect";
 import { elementsVariants } from "./components/SupplyDemand/animations";
+import { useBreakpoint } from "styled-breakpoints/react-styled";
+import { down } from "styled-breakpoints";
 
 export default function Home() {
+  const isSmall = useBreakpoint(down("md"));
+
   const [state, setState] = useState(1);
-  const products = [
-    "TV",
-    "Movie",
-    "Brand",
-    "Game",
-    "Sports",
-    "Talent",
-    "TV",
-    "Movie",
-    "Brand",
-    "Game",
-    "Sports",
-    "Talent",
-  ];
+  const products = ["TV", "Movie", "Brand", "Game", "Sports", "Talent"];
 
   const supplyText = useRect();
   const demandText = useRect();
+
+  const data = {
+    position: "left",
+  };
 
   return (
     <>
@@ -58,14 +52,23 @@ export default function Home() {
         </Box>
         <ResponsiveCenter height="100vh" width="auto">
           <CustomStack>
-            <Container className="purple">
+            <Container>
               <AnimatePresence>
                 <CircleBox
                   className="purple-circle"
                   initial="show"
-                  animate={state < 3 ? "show" : "circle_box_hidden"}
+                  animate={
+                    state < 3
+                      ? "show"
+                      : {
+                          x: isSmall ? 0 : -120,
+                          y: isSmall ? -50 : 0,
+                          scale: 0,
+                        }
+                  }
+                  d
                   variants={elementsVariants}
-                  custom="left"
+                  custom={data}
                   exit={{ x: -150, scale: [1, 0] }}
                   transition={{ duration: 1 }}
                 >
@@ -105,12 +108,20 @@ export default function Home() {
                 </CircleBox>
               </AnimatePresence>
             </Container>
-            <Container className="blue">
+            <Container>
               <AnimatePresence>
                 <CircleBox
                   className="blue-circle"
                   initial="show"
-                  animate={state < 3 ? "show" : "circle_box_hidden"}
+                  animate={
+                    state < 3
+                      ? "show"
+                      : {
+                          x: isSmall ? 0 : 120,
+                          y: isSmall ? 50 : 0,
+                          scale: 0,
+                        }
+                  }
                   variants={elementsVariants}
                   exit={{
                     x: 150,
@@ -166,7 +177,11 @@ export default function Home() {
                 alt="Globe background image"
               />
               <GlobeVideo
-                animate={state > 4 ? { scale: [1, 1.2] } : 1}
+                animate={
+                  state > 4
+                    ? { scale: [1, 1.2], rotate: isSmall ? 270 : 0 }
+                    : { scale: 1, rotate: isSmall ? 270 : 0 }
+                }
                 transition={{ duration: 1 }}
                 playsInline={true}
                 autoPlay={true}
@@ -227,15 +242,25 @@ export default function Home() {
               >
                 {products.map((product, index) => {
                   const deg = (360 / products.length) * index;
+                  const calculateBase =
+                    100 * (isSmall ? (state > 3 ? 0.4 : 0.7) : 1);
                   const size =
                     products.length > 12
-                      ? 100 - [(products.length - 12) * 4]
-                      : 100;
+                      ? calculateBase - [(products.length - 12) * 4]
+                      : calculateBase;
                   return (
                     <CircleContainer key={index}>
                       <CircleProduct
                         deg={deg}
-                        translate={state > 3 ? "315px" : "230px"}
+                        translate={
+                          state > 3
+                            ? isSmall
+                              ? "200px"
+                              : "315px"
+                            : isSmall
+                            ? "130px"
+                            : "230px"
+                        }
                       >
                         <Img size={size} src="/product.svg" label={product} />
                       </CircleProduct>
@@ -248,7 +273,15 @@ export default function Home() {
               <ResponsiveCenter
                 position="absolute"
                 initial="hidden"
-                animate={state >= 4 ? "show" : "hidden"}
+                animate={
+                  state === 4
+                    ? "show"
+                    : state === 5
+                    ? isSmall
+                      ? "hidden"
+                      : "show"
+                    : "hidden"
+                }
                 exit={{ scale: [1, 0] }}
                 transition={{ duration: 1 }}
                 variants={elementsVariants}
@@ -264,7 +297,15 @@ export default function Home() {
                     <CircleContainer key={index}>
                       <CircleProduct
                         deg={deg}
-                        translate={state > 4 ? "260px" : "205px"}
+                        translate={
+                          state > 4
+                            ? isSmall
+                              ? "200px"
+                              : "260px"
+                            : isSmall
+                            ? "130px"
+                            : "205px"
+                        }
                       >
                         <Img size={size} src="/solution.svg" label={product} />
                       </CircleProduct>
@@ -284,7 +325,7 @@ export default function Home() {
               height={supplyText.rect.height}
               top={supplyText.rect.top}
               bottom={supplyText.rect.bottom}
-              left={supplyText.rect.left}
+              left={isSmall ? supplyText.rect.left + 8 : supplyText.rect.left}
               right={supplyText.rect.right}
             >
               <Title
@@ -294,11 +335,11 @@ export default function Home() {
                   state < 3
                     ? "without_opacity"
                     : state === 3
-                    ? "text_translate"
-                    : "text_translate_plus"
+                    ? "text_purple_translate"
+                    : "text_purple_translate_plus"
                 }
                 variants={elementsVariants}
-                custom="left"
+                custom={isSmall}
               >
                 SUPPLY
               </Title>
@@ -311,7 +352,7 @@ export default function Home() {
               height={demandText.rect.height}
               top={demandText.rect.top}
               bottom={demandText.rect.bottom}
-              left={demandText.rect.left}
+              left={isSmall ? demandText.rect.left + 8 : demandText.rect.left}
               right={demandText.rect.right}
             >
               <Title
@@ -321,11 +362,11 @@ export default function Home() {
                   state < 3
                     ? "without_opacity"
                     : state === 3
-                    ? "text_translate"
-                    : "text_translate_plus"
+                    ? "text_blue_translate"
+                    : "text_blue_translate_plus"
                 }
                 variants={elementsVariants}
-                custom="right"
+                custom={isSmall}
               >
                 DEMAND
               </Title>

@@ -21,7 +21,6 @@ const images = {
 
 export const GenesComponent = ({ type, ...props }) => {
   const isSmall = useBreakpoint(down("md"));
-  console.log(isSmall);
   return (
     <Genes
       {...props}

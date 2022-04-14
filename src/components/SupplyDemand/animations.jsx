@@ -16,7 +16,7 @@ export const elementsVariants = {
     scale: 1,
     opacity: 0.4,
   },
-  circle_box_hidden: (position) => ({
+  circle_box_hidden: ({ position }) => ({
     x: position === "left" ? -120 : 120,
     scale: 0,
   }),
@@ -24,6 +24,7 @@ export const elementsVariants = {
     scale: step === 3 ? 0.9 : 1.05,
     opacity: 1,
   }),
+  //TODO Hacer lo mismo de los plus pero con los dot para mobile
   show_scale_dot_purple: (step) => ({
     scale: 1,
     opacity: 1,
@@ -48,17 +49,31 @@ export const elementsVariants = {
     opacity: 0,
     transition: { duration: 1, delay: 0.4 },
   },
-  text_translate: (position) => ({
-    x: position === "left" ? -165 : 175,
-    y: 18,
-    scale: 0.6,
+  text_purple_translate: (isSmall) => ({
+    x: !isSmall ? -165 : 0,
+    y: !isSmall ? 18 : -90,
+    scale: !isSmall ? 0.6 : 0.7,
     opacity: [0.5, 1],
     transition: { duration: 1 },
   }),
-  text_translate_plus: (position) => ({
-    x: position === "left" ? -220 : 230,
-    y: 18,
-    scale: 0.6,
+  text_purple_translate_plus: (isSmall) => ({
+    x: !isSmall ? -220 : 0,
+    y: !isSmall ? 18 : -125,
+    scale: !isSmall ? 0.6 : 0.7,
+    opacity: 1,
+    transition: { duration: 1 },
+  }),
+  text_blue_translate: (isSmall) => ({
+    x: !isSmall ? 175 : 0,
+    y: !isSmall ? 18 : 125,
+    scale: !isSmall ? 0.6 : 0.7,
+    opacity: [0.5, 1],
+    transition: { duration: 1 },
+  }),
+  text_blue_translate_plus: (isSmall) => ({
+    x: !isSmall ? 230 : 0,
+    y: !isSmall ? 18 : 160,
+    scale: !isSmall ? 0.6 : 0.7,
     opacity: 1,
     transition: { duration: 1 },
   }),

@@ -116,11 +116,12 @@ export const GlobeBackground = styled(motion.img)((props) => ({
   padding: 0,
   display: "block",
   margin: "0 auto",
+  width: "100%",
   maxHeight: "100%",
   [down("sm")(props)]: {
     maxWidth: "60%",
   },
-  [between("sm", "xl")(props)]: {
+  [up("sm")(props)]: {
     maxWidth: "70%",
   },
   ...props,
@@ -132,7 +133,7 @@ export const GlobeGradientLine = styled(motion.img)((props) => ({
     transform: "rotate(90deg)",
   },
   [down("md")(props)]: {
-    maxWidth: "500px",
+    maxWidth: "450px",
   },
   [between("md", "lg")(props)]: {
     maxWidth: "650px",
