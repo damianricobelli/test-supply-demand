@@ -18,8 +18,13 @@ import {
 } from "./components/SupplyDemand/styles";
 import ParrotLogo from "./components/SupplyDemand/parrot-logo";
 import { GlowDot } from "./components/SupplyDemand/glow-dot";
-import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import {
+  AnimatePresence,
+  useElementScroll,
+  useTransform,
+  useViewportScroll,
+} from "framer-motion";
+import { useRef, useState } from "react";
 import { GenesComponent } from "./components/SupplyDemand/genes";
 
 import { useRect } from "./hooks/useRect";
@@ -36,12 +41,21 @@ export default function Home() {
   const supplyText = useRect();
   const demandText = useRect();
 
-  const data = {
-    position: "left",
-  };
+  const containerRef = useRef(null);
+
+  const { scrollY } = useViewportScroll();
+
+  const frame = useTransform(
+    scrollY,
+    [0, 300, 600, 900, 1200, 1500],
+    ["one", "two", "three", "four", "five", "six"]
+  );
+
+  console.log(frame.get());
 
   return (
     <>
+      <Box height="200vh" />
       <Box backgroundColor="black">
         <Box position="absolute" left="0">
           <button onClick={() => setState(1)}>Estado 1</button>
@@ -50,7 +64,7 @@ export default function Home() {
           <button onClick={() => setState(4)}>Estado 4</button>
           <button onClick={() => setState(5)}>Estado 5</button>
         </Box>
-        <ResponsiveCenter height="100vh" width="auto">
+        <ResponsiveCenter height="500vh" width="auto" ref={containerRef}>
           <CustomStack>
             <Container>
               <AnimatePresence>
@@ -66,9 +80,7 @@ export default function Home() {
                           scale: 0,
                         }
                   }
-                  d
                   variants={elementsVariants}
-                  custom={data}
                   exit={{ x: -150, scale: [1, 0] }}
                   transition={{ duration: 1 }}
                 >
@@ -380,6 +392,7 @@ export default function Home() {
           </AnimatePresence>
         </ResponsiveCenter>
       </Box>
+      <Box height="200vh" />
     </>
   );
 }
