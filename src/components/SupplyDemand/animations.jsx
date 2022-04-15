@@ -25,16 +25,32 @@ export const elementsVariants = {
     opacity: 1,
   }),
   //TODO Hacer lo mismo de los plus pero con los dot para mobile
-  show_scale_dot_purple: (step) => ({
+  show_scale_dot_purple: (isSmall) => ({
     scale: 1,
     opacity: 1,
-    x: step === 3 ? 195 : 140,
+    x: !isSmall ? 195 : 93,
+    y: !isSmall ? 0 : -3,
     transition: { duration: 1 },
   }),
-  show_scale_dot_blue: (step) => ({
+  show_scale_dot_purple_plus: (isSmall) => ({
     scale: 1,
     opacity: 1,
-    x: step === 3 ? -195 : -140,
+    x: !isSmall ? 140 : 60,
+    y: !isSmall ? 0 : -3,
+    transition: { duration: 1 },
+  }),
+  show_scale_dot_blue: (isSmall) => ({
+    scale: 1,
+    opacity: 1,
+    x: !isSmall ? -195 : -93,
+    y: !isSmall ? 0 : -3,
+    transition: { duration: 1 },
+  }),
+  show_scale_dot_blue_plus: (isSmall) => ({
+    scale: 1,
+    opacity: 1,
+    x: !isSmall ? -140 : -60,
+    y: !isSmall ? 0 : -3,
     transition: { duration: 1 },
   }),
   hidden_scale_dot_purple: {
@@ -64,14 +80,14 @@ export const elementsVariants = {
     transition: { duration: 1 },
   }),
   text_blue_translate: (isSmall) => ({
-    x: !isSmall ? 175 : 0,
+    x: !isSmall ? 175 : 6,
     y: !isSmall ? 18 : 125,
     scale: !isSmall ? 0.6 : 0.7,
     opacity: [0.5, 1],
     transition: { duration: 1 },
   }),
   text_blue_translate_plus: (isSmall) => ({
-    x: !isSmall ? 230 : 0,
+    x: !isSmall ? 230 : 6,
     y: !isSmall ? 18 : 160,
     scale: !isSmall ? 0.6 : 0.7,
     opacity: 1,

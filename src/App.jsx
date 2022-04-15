@@ -208,11 +208,13 @@ export default function Home() {
               <GlowDot
                 initial="hidden_scale_dot_purple"
                 animate={
-                  state > 2
+                  state < 3
+                    ? "hidden_scale_dot_purple"
+                    : state === 3
                     ? "show_scale_dot_purple"
-                    : "hidden_scale_dot_purple"
+                    : "show_scale_dot_purple_plus"
                 }
-                custom={state}
+                custom={isSmall}
                 exit={{ scale: [1, 0] }}
                 variants={elementsVariants}
                 variant="purple"
@@ -221,9 +223,13 @@ export default function Home() {
               <GlowDot
                 initial="hidden_scale_dot_blue"
                 animate={
-                  state > 2 ? "show_scale_dot_blue" : "hidden_scale_dot_blue"
+                  state < 3
+                    ? "hidden_scale_dot_blue"
+                    : state === 3
+                    ? "show_scale_dot_blue"
+                    : "show_scale_dot_blue_plus"
                 }
-                custom={state}
+                custom={isSmall}
                 exit={{ scale: [1, 0] }}
                 variants={elementsVariants}
                 variant="blue"
