@@ -11,7 +11,7 @@ export const GradientLine = ({ state, elementsVariants }) => {
       exit={{
         scale: state < 3 ? 0 : state === 3 ? [1, 0] : [1.05, 1],
       }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.75 }}
       src="/globe-gradient-line.svg"
       alt="Globe gradient"
     />

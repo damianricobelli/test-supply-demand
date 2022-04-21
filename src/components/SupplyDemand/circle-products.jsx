@@ -16,7 +16,7 @@ export const CircleProducts = ({
         initial="hidden"
         animate={state >= 3 && state !== 5 ? "show" : "hidden"}
         exit={{ scale: [1, 0] }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.75 }}
         variants={elementsVariants}
       >
         {products.map((product, index) => {

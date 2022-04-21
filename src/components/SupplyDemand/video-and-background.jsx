@@ -16,7 +16,7 @@ export const VideoAndBackground = ({ state, isSmall }) => {
             ? { scale: [1, 1.2], rotate: isSmall ? 270 : 0 }
             : { scale: 1, rotate: isSmall ? 270 : 0 }
         }
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.75 }}
         playsInline={true}
         autoPlay={true}
         muted={true}

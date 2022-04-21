@@ -24,7 +24,7 @@ export const CircleSolutions = ({
             : "hidden"
         }
         exit={{ scale: [1, 0] }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.75 }}
         variants={elementsVariants}
       >
         {solutions.map((solution, index) => {

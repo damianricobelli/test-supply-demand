@@ -49,14 +49,14 @@ export const CircleComponent = ({ state, elementsVariants, isSmall, type }) => {
             x: texts[type].exit,
             scale: [1, 0],
           }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.75 }}
         >
           <AnimatePresence>
             <GenesComponent
               initial="hidden"
               animate={state === 2 ? "genes_show" : "hidden"}
               exit={{ scale: [1, 0] }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.75 }}
               variants={elementsVariants}
               type={texts[type].type}
             />
@@ -74,7 +74,7 @@ export const CircleComponent = ({ state, elementsVariants, isSmall, type }) => {
             </Title>
             <Subtitle
               animate={state >= 2 ? { opacity: 0 } : "show"}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.75 }}
               variants={elementsVariants}
             >
               {texts[type].subtitle}
