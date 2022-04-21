@@ -1,22 +1,12 @@
 import { motion } from "framer-motion";
-import { down, up, between, only } from "styled-breakpoints";
+import { down, up, between } from "styled-breakpoints";
 import styled from "styled-components";
 import { Box } from "../UI/Box";
 import { Center } from "../UI/Center";
 import { Stack } from "../UI/Stack";
 
-export const ResponsiveCenter = styled(Center)((props) => ({
-  [up("sm")(props)]: {
-    flexDirection: "row",
-  },
-  [down("sm")(props)]: {
-    flexDirection: "column",
-  },
-  ...props,
-}));
-
 export const CustomStack = styled(Stack)((props) => ({
-  position: "absolute",
+  position: "relative",
   height: "700px",
   alignItems: "center",
   justifyContent: "center",
@@ -191,6 +181,37 @@ export const Title = styled(motion.p).attrs((props) => ({
   }
   ${down("sm")} {
     font-size: 1.5rem;
+  }
+`;
+
+export const OverlayTextContainer = styled(motion.div).attrs((props) => ({
+  className: props.className,
+}))`
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ${down("md")} {
+    transform: rotate(270deg);
+    width: 100%;
+    right: 0;
+    left: 0;
+  }
+  ${up("md")} {
+    width: 50%;
+  }
+  &.supply {
+    ${up("md")} {
+      left: 2.45rem;
+    }
+  }
+  &.demand {
+    ${up("md")} {
+      right: 2.45rem;
+    }
   }
 `;
 
