@@ -7,7 +7,7 @@ import { Stack } from "../UI/Stack";
 
 export const CustomStack = styled(Stack)((props) => ({
   position: "relative",
-  height: "700px",
+  width: "100%",
   alignItems: "center",
   justifyContent: "center",
   [down("md")(props)]: {
@@ -16,11 +16,7 @@ export const CustomStack = styled(Stack)((props) => ({
 }));
 
 export const Container = styled(Box)((props) => ({
-  [up("md")(props)]: {
-    width: "50%",
-  },
   [down("md")(props)]: {
-    width: "100%",
     transform: "rotate(270deg)",
     zIndex: 3,
   },
@@ -70,7 +66,7 @@ export const LogoBox = styled(Center)((props) => ({
   zIndex: 4,
   position: "absolute",
   width: "100%",
-  top: "48.5%",
+  top: "46%",
   "> svg": {
     width: "100%",
     maxWidth: "30px",
@@ -85,12 +81,17 @@ export const GlobeVideo = styled(motion.video)((props) => ({
   position: "absolute",
   borderRadius: "100%",
   backgroundImage: "/background.png",
-  [down("md")(props)]: {
+  [down("sm")(props)]: {
     width: "100%",
     maxWidth: "200px",
     transform: "rotate(270deg)",
   },
-  [between("md", "lg")(props)]: {
+  [up("sm")(props)]: {
+    width: "100%",
+    maxWidth: "250px",
+    transform: "rotate(270deg)",
+  },
+  [up("md")(props)]: {
     width: "100%",
     maxWidth: "350px",
   },
@@ -109,7 +110,7 @@ export const GlobeBackground = styled(motion.img)((props) => ({
   width: "100%",
   maxHeight: "100%",
   [down("sm")(props)]: {
-    maxWidth: "60%",
+    maxWidth: "80%",
   },
   [up("sm")(props)]: {
     maxWidth: "70%",
