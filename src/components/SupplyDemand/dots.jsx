@@ -18,7 +18,6 @@ export const DotsComponent = ({ state, isSmall, elementsVariants }) => {
         exit={{ scale: [1, 0] }}
         variants={elementsVariants}
         variant="purple"
-        left="0"
       />
       <GlowDot
         initial="hidden_scale_dot_blue"
@@ -33,7 +32,6 @@ export const DotsComponent = ({ state, isSmall, elementsVariants }) => {
         exit={{ scale: [1, 0] }}
         variants={elementsVariants}
         variant="blue"
-        right="0"
       />
     </AnimatePresence>
   );
