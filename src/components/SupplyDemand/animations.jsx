@@ -33,7 +33,7 @@ export const elementsVariants = {
   show_scale_dot_purple: (isSmall) => ({
     scale: 1,
     opacity: 1,
-    x: isSmall && -203,
+    x: isSmall ? -203 : -338,
     transition: { duration: 0.75 },
   }),
   show_scale_dot_purple_plus: (isSmall) => ({
@@ -51,13 +51,12 @@ export const elementsVariants = {
   show_scale_dot_blue: (isSmall) => ({
     scale: 1,
     opacity: 1,
-    x: isSmall && 203,
+    x: isSmall ? 203 : 338,
     transition: { duration: 0.75 },
   }),
   show_scale_dot_blue_plus: (isSmall) => ({
     scale: 1,
     opacity: 1,
-    x: 395,
     x: isSmall ? 235 : 395,
     transition: { duration: 0.75 },
   }),
