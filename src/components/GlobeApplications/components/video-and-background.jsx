@@ -1,6 +1,6 @@
 import React from "react";
-import { Center } from "../UI/Center";
-import { GlobeBackground, GlobeVideo } from "./styles";
+import { Center } from "../../UI/Center";
+import { GlobeBackground, GlobeVideo } from "../styles";
 
 export const VideoAndBackground = ({ state, isSmall }) => {
   return (

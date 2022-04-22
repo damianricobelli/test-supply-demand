@@ -1,6 +1,6 @@
 import React from "react";
-import { OverlayTextContainer, Subtitle, Title } from "./styles";
-import { Box } from "../UI/Box";
+import { OverlayTextContainer, Subtitle, Title } from "../styles";
+import { Box } from "../../UI/Box";
 
 export const OverlayTextContainerComponent = ({
   state,

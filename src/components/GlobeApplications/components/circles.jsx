@@ -1,6 +1,6 @@
 import React from "react";
-import { CircleBox, Container, Subtitle, Title } from "./styles";
-import { Box } from "../UI/Box";
+import { CircleBox, Container, Subtitle, Title } from "../styles";
+import { Box } from "../../UI/Box";
 import { AnimatePresence } from "framer-motion";
 import { GenesComponent } from "./genes";
 import { LargeCircle } from "./large-circle";

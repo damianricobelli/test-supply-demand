@@ -1,54 +1,46 @@
 import { AnimatePresence } from "framer-motion";
 import React from "react";
-import { Center } from "../UI/Center";
-import { CircleContainer, CircleProduct, Img } from "./styles";
+import { Center } from "../../UI/Center";
+import { CircleContainer, CircleProduct, Img } from "../styles";
 
-export const CircleSolutions = ({
+export const CircleProducts = ({
   state,
   isSmall,
   elementsVariants,
-  solutions,
+  products,
 }) => {
   return (
     <AnimatePresence>
       <Center
         position="absolute"
         initial="hidden"
-        animate={
-          state === 4
-            ? "show"
-            : state === 5
-            ? isSmall
-              ? "hidden"
-              : "show"
-            : "hidden"
-        }
+        animate={state >= 3 && state !== 5 ? "show" : "hidden"}
         exit={{ scale: [1, 0] }}
         transition={{ duration: 0.75 }}
         variants={elementsVariants}
       >
-        {solutions.map((solution, index) => {
-          const deg = (360 / solutions.length) * index;
-          const width = state > 4 ? 100 : 70;
+        {products.map((product, index) => {
+          const deg = (360 / products.length) * index;
+          const calculateBase = 100 * (isSmall ? (state > 3 ? 0.4 : 0.7) : 1);
           const size =
-            solutions.length > 12
-              ? width - [(solutions.length - 12) * 4]
-              : width;
+            products.length > 12
+              ? calculateBase - [(products.length - 12) * 4]
+              : calculateBase;
           return (
             <CircleContainer key={index}>
               <CircleProduct
                 deg={deg}
                 translate={
-                  state > 4
+                  state > 3
                     ? isSmall
                       ? "200px"
-                      : "260px"
+                      : "315px"
                     : isSmall
                     ? "130px"
-                    : "205px"
+                    : "230px"
                 }
               >
-                <Img size={size} src="/solution.svg" label={solution} />
+                <Img size={size} src="/product.svg" label={product} />
               </CircleProduct>
             </CircleContainer>
           );
@@ -58,4 +50,4 @@ export const CircleSolutions = ({
   );
 };
 
-export default CircleSolutions;
+export default CircleProducts;

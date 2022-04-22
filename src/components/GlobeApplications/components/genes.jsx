@@ -1,4 +1,4 @@
-import { Genes } from "./styles";
+import { Genes } from "../styles";
 import { useBreakpoint } from "styled-breakpoints/react-styled";
 import { down } from "styled-breakpoints";
 

@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { down, up, between } from "styled-breakpoints";
 import styled from "styled-components";
-import { Box } from "../UI/Box";
-import { Center } from "../UI/Center";
-import { Stack } from "../UI/Stack";
+import { Box } from "../../UI/Box";
+import { Center } from "../../UI/Center";
+import { Stack } from "../../UI/Stack";
 
 export const CustomStack = styled(Stack)((props) => ({
   position: "relative",

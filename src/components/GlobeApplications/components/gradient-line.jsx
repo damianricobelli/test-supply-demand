@@ -1,5 +1,5 @@
 import React from "react";
-import { GlobeGradientLine } from "./styles";
+import { GlobeGradientLine } from "../styles";
 
 export const GradientLine = ({ state, elementsVariants }) => {
   return (
